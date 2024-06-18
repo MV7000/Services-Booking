@@ -1,12 +1,14 @@
 export type dataServicesProps = {
   servicesLists: [
-    id: string,
-    name: string,
-    icon: {
-      url: string;
-    },
-    color: {
-      hex: string;
+    {
+      id: number | string;
+      name: string;
+      icon: {
+        url: string;
+      };
+      color: {
+        hex: string;
+      };
     }
   ];
 };

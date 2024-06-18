@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { ServiceCardListProps } from '../type';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
+import { PinContainer } from "../ui/3d-pin";
 // import getBase64 from '@/app/functions/GetData/getBase64';
 
 interface ServiceCardProps {
@@ -15,11 +16,16 @@ const ServiceCard = async ({ dataCardsProps }: ServiceCardProps) => {
   // const myBlurDataUrl = await getBase64(images[0].url)
 
   return (
+      <PinContainer
+        title="Click on card to detailed view"
+        href={'/service&about/' + id}
+        color={servicesLists[0].color.hex}
+      >
     <Link
       href={'/service&about/' + id}
       style={{ backgroundColor: `${servicesLists[0].color.hex}` }}
       className='flex items-center justify-between flex-col overflow-hidden w-[calc(var(--index)*12)] h-[calc(var(--index)*15)] border-2 hover:shadow-[7px_7px_10px_var(--lavender)] active:shadow-[1px_1px_5px_var(--lavender)] rounded-2xl shadow-[3px_3px_12px_var(--lavender)] hover:-translate-y-1 active:translate-y-3 transition-[1s] cursor-pointer'
-    >
+      >
       <div className='w-[calc(var(--index)*11.8)] h-[calc(var(--index)*7)]'>
         <Image
           className='w-[100%] h-[100%] object-cover'
@@ -56,6 +62,7 @@ const ServiceCard = async ({ dataCardsProps }: ServiceCardProps) => {
         </p>
       </div>
     </Link>
+      </PinContainer>
   );
 };
 
